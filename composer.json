@@ -1,0 +1,18 @@
+{
+    "name": "daret/sae2-01",
+    "description": "développement d'une application",
+    "type": "project",
+    "license": "copyleft",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "tom daret",
+            "email": "tom.daret@etudiant.univ-reims.fr"
+        }
+    ],
+    "require": {}
+}
