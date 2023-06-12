@@ -25,9 +25,9 @@ private string $placeOfBirth;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getAvatarid(): int
+    public function getAvatarId(): ?int
     {
         return $this->avatarid;
     }
