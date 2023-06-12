@@ -1,7 +1,5 @@
 <?php
-
 declare(strict_types=1);
-
 namespace Entity;
 
 use Database\MyPdo;
@@ -10,13 +8,13 @@ use PDO;
 
 class People
 {
-    private int $id;
-    private ?int $avatarid;
-    private ?string $birthday;
-    private ?string $deathday;
-    private string $name;
-    private string $biography;
-    private string $placeOfBirth;
+private int $id;
+private ?int $avatarid;
+private ?string $birthday;
+private ?string $deathday;
+private string $name;
+private string $biography;
+private string $placeOfBirth;
 
     /**
      * @return int
@@ -27,9 +25,9 @@ class People
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getAvatarid(): ?int
+    public function getAvatarId(): ?int
     {
         return $this->avatarid;
     }
@@ -73,7 +71,7 @@ class People
     {
         return $this->placeOfBirth;
     }
-    public function getRole($movieId): string
+    public function getRole($movieId):string
     {
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
@@ -85,5 +83,41 @@ SQL
         );
         $stmt->execute([':id' => $this->getId(),':movieId'=>$movieId]);
         return $stmt->Fetch()['role'];
+    }
+
+    public static function findById(int $id): People
+    {
+        $pdo= MyPdo::getInstance()->prepare(
+            <<<'SQL'
+            select id, avatarid, birthday, deathday, name, biography, placeOfBirth
+            from people
+            where id = :peopleId
+            SQL);
+        $pdo->bindValue(':peopleId',$id);
+        $pdo->execute();
+        $pdo->setFetchMode(PDO::FETCH_CLASS, People::class);
+        if (($people = $pdo->fetch()) === false) {
+            throw new EntityNotFoundException("l'id ne correspond à aucun acteur");
+        }
+        return $people;
+    }
+    public function getMovie():array
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+    SELECT id, posterId, originalLanguage, originalTitle, overview, releaseDate, runtime, tagline, title
+    FROM movie m
+    WHERE m.id IN(SELECT movieId
+                  FROM cast
+                  WHERE peopleId= :id)
+SQL
+        );
+        $stmt->execute([':id' => $this->getId()]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Movie::class);
+        if (($movie = $stmt->fetchAll()) === false) {
+            throw new EntityNotFoundException("Pas de film pour l'id {$this->getId()}");
+        }
+        return $movie;
+
     }
 }
