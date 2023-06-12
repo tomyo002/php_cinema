@@ -112,7 +112,7 @@ class Movie
 {
     $stmt = MyPdo::getInstance()->prepare(
         <<<'SQL'
-    SELECT *
+    SELECT id,avatarid,birthday,deathday,name,biography,placeOfBirth
     FROM people p 
     WHERE p.id IN(SELECT peopleId
                   FROM cast
@@ -121,10 +121,10 @@ SQL
     );
     $stmt->execute([':id' => $this->getId()]);
     $stmt->setFetchMode(PDO::FETCH_CLASS, People::class);
-    if (($image = $stmt->fetch()) === false) {
+    if (($people = $stmt->fetchAll()) === false) {
         throw new EntityNotFoundException("Pas de People pour l'id {$this->getId()}");
     }
-    return $image;
+    return $people;
 
 }
 }
