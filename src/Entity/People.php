@@ -1,7 +1,5 @@
 <?php
-
 declare(strict_types=1);
-
 namespace Entity;
 
 use Database\MyPdo;
@@ -73,7 +71,7 @@ class People
     {
         return $this->placeOfBirth;
     }
-    public function getRole($movieId): string
+    public function getRole($movieId):string
     {
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
