@@ -8,13 +8,13 @@ use PDO;
 
 class People
 {
-    private int $id;
-    private ?int $avatarid;
-    private ?string $birthday;
-    private ?string $deathday;
-    private string $name;
-    private string $biography;
-    private string $placeOfBirth;
+private int $id;
+private ?int $avatarid;
+private ?string $birthday;
+private ?string $deathday;
+private string $name;
+private string $biography;
+private string $placeOfBirth;
 
     /**
      * @return int
@@ -70,6 +70,22 @@ class People
     public function getPlaceOfBirth(): string
     {
         return $this->placeOfBirth;
+    }
+    public static function findById(int $id): People
+    {
+        $pdo= MyPdo::getInstance()->prepare(
+            <<<'SQL'
+            select *
+            from people
+            where id = :peopleId
+            SQL);
+        $pdo->bindValue(':peopleId',$id);
+        $pdo->execute();
+        $pdo->setFetchMode(PDO::FETCH_CLASS, Movie::class);
+        if (($movie = $pdo->fetch()) === false) {
+            throw new EntityNotFoundException("l'id ne correspond à aucun acteur");
+        }
+        return $movie;
     }
 
 }
