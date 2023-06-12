@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Entity;
@@ -91,7 +92,7 @@ class Movie
         return $this->title;
     }
 
-    public static function findById(int $id):Movie
+    public static function findById(int $id): Movie
     {
         $pdo = MyPdo::getInstance()->prepare(
             <<<'SQL'
@@ -100,7 +101,7 @@ class Movie
                 where id = :idMovie
             SQL
         );
-        $pdo->bindValue(':idMovie',$id);
+        $pdo->bindValue(':idMovie', $id);
         $pdo->execute();
         $pdo->setFetchMode(PDO::FETCH_CLASS, Movie::class);
         if (($movie = $pdo->fetch()) === false) {
@@ -108,23 +109,23 @@ class Movie
         }
         return $movie;
     }
-    public function getPeople():array
-{
-    $stmt = MyPdo::getInstance()->prepare(
-        <<<'SQL'
+    public function getPeople(): array
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
     SELECT id,avatarid,birthday,deathday,name,biography,placeOfBirth
     FROM people p 
     WHERE p.id IN(SELECT peopleId
                   FROM cast
                   WHERE movieId= :id)
 SQL
-    );
-    $stmt->execute([':id' => $this->getId()]);
-    $stmt->setFetchMode(PDO::FETCH_CLASS, People::class);
-    if (($people = $stmt->fetchAll()) === false) {
-        throw new EntityNotFoundException("Pas de People pour l'id {$this->getId()}");
-    }
-    return $people;
+        );
+        $stmt->execute([':id' => $this->getId()]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, People::class);
+        if (($people = $stmt->fetchAll()) === false) {
+            throw new EntityNotFoundException("Pas de People pour l'id {$this->getId()}");
+        }
+        return $people;
 
-}
+    }
 }

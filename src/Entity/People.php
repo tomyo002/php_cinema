@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Entity;
 
 use Database\MyPdo;
@@ -8,13 +10,13 @@ use PDO;
 
 class People
 {
-private int $id;
-private ?int $avatarid;
-private ?string $birthday;
-private ?string $deathday;
-private string $name;
-private string $biography;
-private string $placeOfBirth;
+    private int $id;
+    private ?int $avatarid;
+    private ?string $birthday;
+    private ?string $deathday;
+    private string $name;
+    private string $biography;
+    private string $placeOfBirth;
 
     /**
      * @return int
@@ -71,7 +73,7 @@ private string $placeOfBirth;
     {
         return $this->placeOfBirth;
     }
-    public function getRole($movieId):string
+    public function getRole($movieId): string
     {
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
