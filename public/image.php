@@ -12,7 +12,7 @@ try{
     if(!ctype_digit($_GET['imageId'])){
         throw new ParameterException("imageId n'est pas un entier");
     }
-    $image= Image::findById((int)$_GET['coverId']);
+    $image= Image::findById((int)$_GET['imageId']);
     header('Content-Type: image/jpeg');
     echo $image->getJpeg();
 }catch (ParameterException) {

@@ -1,0 +1,42 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    border: solid black;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+    overflow-y: auto;
+    text-overflow: ellipsis;
+    flex-direction: column;
+}
+.footer{
+    display:flex;
+}
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.movie{
+    display: flex;
+    flex-direction: column;
+    max-width:240px ;
+}
+
+span{
+    display: flex;
+    justify-content: center;
+    border: black solid;
+}
