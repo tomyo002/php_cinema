@@ -71,6 +71,20 @@ private string $placeOfBirth;
     {
         return $this->placeOfBirth;
     }
+    public function getRole($movieId):string
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+    SELECT role
+    FROM cast
+    WHERE peopleid= :id 
+    AND movieId=:movieId
+SQL
+        );
+        $stmt->execute([':id' => $this->getId(),':movieId'=>$movieId]);
+        return $stmt->Fetch()['role'];
+    }
+
     public static function findById(int $id): People
     {
         $pdo= MyPdo::getInstance()->prepare(
