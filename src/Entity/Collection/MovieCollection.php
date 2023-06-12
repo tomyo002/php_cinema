@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace entity\Collection;
+namespace Entity\Collection;
 
-use database\MyPdo;
-use entity\Movie;
+use Database\MyPdo;
+use Entity\Movie;
 use PDO;
 
 class MovieCollection

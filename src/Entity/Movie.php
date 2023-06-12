@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace entity;
+namespace Entity;
 
-use database\MyPdo;
+use Database\MyPdo;
 use Entity\Exception\EntityNotFoundException;
 use PDO;
 
