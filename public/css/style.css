@@ -40,9 +40,14 @@ span{
     justify-content: center;
     border: black solid;
 }
+.lienMovie{
+    display: flex;
+    flex:1;
+}
 .movie__info{
     display: flex;
     flex-direction: row;
+    flex:1;
 }
 .title__date{
     display: flex;
@@ -66,4 +71,34 @@ span{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+.people{
+    display:flex;
+}
+.year{
+    display: flex;
+}
+.date__Death{
+    flex:1;
+}
+.date__bird{
+    flex:1;
+}
+.movie__text2{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+.movie__text3{
+    display: flex;
+    flex:1;
+}
+.movie__name{
+    flex:1;
+}
+.movie__date{
+    flex:1;
+}
+.movie__role{
+    flex:1;
 }
