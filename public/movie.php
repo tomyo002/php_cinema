@@ -22,10 +22,15 @@ try {
     exit();
 }
 $peoples= $movie->getPeople();
+$png="image.php?imageId=".$movie->getPosterId();
+if($movie->getPosterId()===null){
+    $png='img/movie.png';
+}
+
 $webPage->setTitle("Titre -".$movie->getTitle());
 $webPage->appendContent(<<<HTML
 <div class="movie__info">
-    <img src="image.php?imageId={$movie->getPosterId()}">
+    <img src="$png">
     <div class="movie__text">
         <div class="title__date">
             <div class="movie__title">{$movie->getTitle()}</div>
@@ -47,7 +52,7 @@ if($people->getAvatarId()===null){
     $webPage->appendContent(<<<HTML
 <a href="people.php?peopleId={$people->getId()}">
 <div class="people__info">
-<img src="image.php?imageId={$people->getAvatarId()}">
+<img src="$pngActor">
 <div class="people__text">
     <div class="people__role">{$people->getRole($movie->getId())}-></div>
     <div class="people__name">{$people->getName()}</div>
