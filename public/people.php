@@ -22,10 +22,14 @@ try {
     exit();
 }
 $movies= $people->getMovie();
+$pngActor = "img/actor.jpeg";
+if($people->getAvatarId()!==null) {
+    $pngActor="image.php?imageId=".$people->getAvatarId();
+}
 $webPage->setTitle('Films-'.$people->getName());
 $webPage->appendContent(<<<HTML
                         <div class="people">
-                            <img src="image.php?imageId={$people->getAvatarId()}">
+                            <img src="$pngActor">
                             <article class="description">
                                     <span>{$people->getName()}</span>
                                     <span>{$people->getPlaceOfBirth()}</span>

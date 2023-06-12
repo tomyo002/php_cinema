@@ -89,7 +89,7 @@ SQL
     {
         $pdo= MyPdo::getInstance()->prepare(
             <<<'SQL'
-            select id, avatarId, birthday, deathday, name, biography, placeOfBirth
+            select id, avatarid, birthday, deathday, name, biography, placeOfBirth
             from people
             where id = :peopleId
             SQL);
