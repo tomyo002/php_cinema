@@ -21,6 +21,7 @@ try {
     http_response_code(404);
     exit();
 }
+$movies= $people->getMovie();
 $webPage->setTitle('Films-'.$people->getName());
 $webPage->appendContent(<<<HTML
                         <div class="people">
@@ -43,3 +44,17 @@ $webPage->appendContent(<<<HTML
                             </article>
                         </div>
                         HTML);
+foreach ($movies as $movie){
+    $webPage->appendContent(<<<HTML
+<div class="movie">
+<img src="image.php?imageId={$movie->getPosterId()}">
+<div class="movie__text">
+    <div class="movie__name">{$movie->getTitle()}</div>
+    <div class="movie__date">{$movie->getDate()}</div>
+    <div class="movie__role">{$people->getRole($movie->getId())}-></div>
+    
+</div>
+</div>
+HTML);
+}
+echo $webPage->toHTML();
