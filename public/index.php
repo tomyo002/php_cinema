@@ -13,7 +13,7 @@ foreach(MovieCollection::findAll() as $movie) {
         <<<HTML
 <a href="movie.php?movieId={$movie->getId()}" class="movie">
     <img src="image.php?imageId={$movie->getPosterId()}">
-    <span>{$webPage->escapeString($movie->getTitle())}</span>
+    <span class="title">{$webPage->escapeString($movie->getTitle())}</span>
 </a>
 
 HTML
