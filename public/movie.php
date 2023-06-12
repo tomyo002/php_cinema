@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Entity\Exception\EntityNotFoundException;
@@ -16,14 +17,15 @@ if (!ctype_digit($_GET['movieId'])) {
     exit();
 }
 try {
-    $movie = Movie::findById( (int)$_GET['movieId']);
+    $movie = Movie::findById((int)$_GET['movieId']);
 } catch (EntityNotFoundException $e) {
     http_response_code(404);
     exit();
 }
 $peoples= $movie->getPeople();
 $webPage->setTitle("Titre -".$movie->getTitle());
-$webPage->appendContent(<<<HTML
+$webPage->appendContent(
+    <<<HTML
 <div class="movie__info">
     <img src="image.php?imageId={$movie->getPosterId()}">
     <div class="movie__text">
@@ -39,7 +41,7 @@ $webPage->appendContent(<<<HTML
 </div>
 HTML
 );
-foreach ($peoples as $people){
+foreach ($peoples as $people) {
     $webPage->appendContent(<<<HTML
 <a href="people.php?peopleId={$people->getId()}">
 <div class="people__info">
