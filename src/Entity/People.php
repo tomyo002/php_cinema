@@ -9,8 +9,8 @@ use PDO;
 class People
 {
 private int $id;
-private int $avatarid;
-private string $birthday;
+private ?int $avatarid;
+private ?string $birthday;
 private ?string $deathday;
 private string $name;
 private string $biography;
@@ -27,7 +27,7 @@ private string $placeOfBirth;
     /**
      * @return int
      */
-    public function getAvatarid(): int
+    public function getAvatarid(): ?int
     {
         return $this->avatarid;
     }
@@ -71,5 +71,17 @@ private string $placeOfBirth;
     {
         return $this->placeOfBirth;
     }
-
+    public function getRole($movieId):string
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+    SELECT role
+    FROM cast
+    WHERE peopleid= :id 
+    AND movieId=:movieId
+SQL
+        );
+        $stmt->execute([':id' => $this->getId(),':movieId'=>$movieId]);
+        return $stmt->Fetch()['role'];
+    }
 }

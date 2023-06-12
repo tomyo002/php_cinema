@@ -40,3 +40,30 @@ span{
     justify-content: center;
     border: black solid;
 }
+.movie__info{
+    display: flex;
+    flex-direction: row;
+}
+.title__date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.movie__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.movie__originalTitle{
+    display: flex;
+    justify-content: end;
+}
+.people__info{
+    display: flex;
+    flex-direction: row;
+}
+.people__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
