@@ -50,15 +50,20 @@ $webPage->appendContent(<<<HTML
                         HTML);
 foreach ($movies as $movie){
     $webPage->appendContent(<<<HTML
-<div class="movie">
-<img src="image.php?imageId={$movie->getPosterId()}">
-<div class="movie__text">
-    <div class="movie__name">{$movie->getTitle()}</div>
-    <div class="movie__date">{$movie->getReleaseDate()}</div>
-    <div class="movie__role">{$people->getRole($movie->getId())}-></div>
-    
-</div>
-</div>
+            <a href="movie.php?movieId={$movie->getId()}" class="lienMovie">
+                <div class="movie__info">
+                    <img src="image.php?imageId={$movie->getPosterId()}">
+                    <div class="movie__text2">
+                        <div class="movie__text3">
+                            <span class="movie__name">{$movie->getTitle()}</span>
+                            <span class="movie__date">{$movie->getReleaseDate()}</span>
+                        </div>  
+                            <span class="movie__role">{$people->getRole($movie->getId())}-></span>
+                            
+                    </div>
+                </div>
+            </a>
+
 HTML);
 }
 echo $webPage->toHTML();
