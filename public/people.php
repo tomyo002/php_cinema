@@ -28,25 +28,27 @@ if($people->getAvatarId()!==null) {
 }
 $webPage->setTitle('Films-'.$people->getName());
 $webPage->appendContent(<<<HTML
-                        <div class="people">
-                            <img src="$pngActor">
-                            <article class="description">
-                                    <span>{$people->getName()}</span>
-                                    <span>{$people->getPlaceOfBirth()}</span>
+                            <div class="people">
+                                        <img src="$pngActor">
+                                        <article class="description">
+                                            <span>{$people->getName()}</span>
+                                            <span>{$people->getPlaceOfBirth()}</span>
+
                         HTML);
 $dateOfDead='';
 if($people->getDeathday() !=null) {
     $dateOfDead=$people->getDeathday();
 }
 $webPage->appendContent(<<<HTML
-                                <article class="year">
-                                    <span>{$people->getBirthday()}</span>
-                                    <h1>-</h1>
-                                    <span>$dateOfDead</span>
-                                </article>
-                                <span>{$people->getBiography()}</span>
-                            </article>
-                        </div>
+                                            <article class="year">
+                                                <span class="date__bird">{$people->getBirthday()}</span>
+                                                <h1>-</h1>
+                                                <span class="date__Death">$dateOfDead</span>
+                                            </article>
+                                            <span>{$people->getBiography()}</span>
+                                        </article>
+                                    </div>
+
                         HTML);
 foreach ($movies as $movie){
     $webPage->appendContent(<<<HTML
