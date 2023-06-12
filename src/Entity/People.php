@@ -89,17 +89,35 @@ SQL
     {
         $pdo= MyPdo::getInstance()->prepare(
             <<<'SQL'
-            select *
+            select id, avatarId, birthday, deathday, name, biography, placeOfBirth
             from people
             where id = :peopleId
             SQL);
         $pdo->bindValue(':peopleId',$id);
         $pdo->execute();
-        $pdo->setFetchMode(PDO::FETCH_CLASS, Movie::class);
-        if (($movie = $pdo->fetch()) === false) {
+        $pdo->setFetchMode(PDO::FETCH_CLASS, People::class);
+        if (($people = $pdo->fetch()) === false) {
             throw new EntityNotFoundException("l'id ne correspond à aucun acteur");
         }
-        return $movie;
+        return $people;
     }
+    public function getMovie():array
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+    SELECT id, posterId, originalLanguage, originalTitle, overview, releaseDate, runtime, tagline, title
+    FROM movie m
+    WHERE m.id IN(SELECT movieId
+                  FROM cast
+                  WHERE peopleId= :id)
+SQL
+        );
+        $stmt->execute([':id' => $this->getId()]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Movie::class);
+        if (($movie = $stmt->fetchAll()) === false) {
+            throw new EntityNotFoundException("Pas de film pour l'id {$this->getId()}");
+        }
+        return $movie;
 
+    }
 }
