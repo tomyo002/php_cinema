@@ -71,22 +71,5 @@ private string $placeOfBirth;
     {
         return $this->placeOfBirth;
     }
-    public static function findByMovieId($id):array
-    {
-        $stmt = MyPdo::getInstance()->prepare(
-            <<<'SQL'
-    SELECT *
-    FROM people p 
-    WHERE p.id IN(SELECT peopleId
-                  FROM cast
-                  WHERE movieId= :id)
-SQL
-        );
-        $stmt->execute([':id' => $id]);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, People::class);
-        if (($image = $stmt->fetch()) === false) {
-            throw new EntityNotFoundException("Pas d'image pour l'id {$id}");
-        }
-        return $image;
-    }
+
 }
