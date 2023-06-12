@@ -37,9 +37,9 @@ SQL
         );
         $stmt->execute([':id' => $id]);
         $stmt->setFetchMode(PDO::FETCH_CLASS, Image::class);
-        if (($cover = $stmt->fetch()) === false) {
+        if (($image = $stmt->fetch()) === false) {
             throw new EntityNotFoundException("Pas de cover pour l'id {$id}");
         }
-        return $cover;
+        return $image;
     }
 }
