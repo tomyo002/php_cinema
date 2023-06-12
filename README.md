@@ -8,9 +8,9 @@
 > Configuration de Composer avec la commande `composer install`  
 
 ## Serveur Web local
-> `composer start:linux`
->
-> `composer start:windows`  
+`composer start:linux`
+
+`composer start:windows`  
 
 
 ## Commande de tests
