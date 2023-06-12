@@ -108,4 +108,23 @@ class Movie
         }
         return $movie;
     }
+    public function getPeople():array
+{
+    $stmt = MyPdo::getInstance()->prepare(
+        <<<'SQL'
+    SELECT *
+    FROM people p 
+    WHERE p.id IN(SELECT peopleId
+                  FROM cast
+                  WHERE movieId= :id)
+SQL
+    );
+    $stmt->execute([':id' => $this->getId()]);
+    $stmt->setFetchMode(PDO::FETCH_CLASS, People::class);
+    if (($image = $stmt->fetch()) === false) {
+        throw new EntityNotFoundException("Pas de People pour l'id {$this->getId()}");
+    }
+    return $image;
+
+}
 }
