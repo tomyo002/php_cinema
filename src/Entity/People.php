@@ -27,7 +27,7 @@ class People
     /**
      * @return int
      */
-    public function getAvatarid(): ?int
+    public function getAvatarid(): int
     {
         return $this->avatarid;
     }
@@ -71,17 +71,5 @@ class People
     {
         return $this->placeOfBirth;
     }
-    public function getRole($movieId):string
-    {
-        $stmt = MyPdo::getInstance()->prepare(
-            <<<'SQL'
-    SELECT role
-    FROM cast
-    WHERE peopleid= :id 
-    AND movieId=:movieId
-SQL
-        );
-        $stmt->execute([':id' => $this->getId(),':movieId'=>$movieId]);
-        return $stmt->Fetch()['role'];
-    }
+
 }
