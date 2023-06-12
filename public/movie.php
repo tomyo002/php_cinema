@@ -41,6 +41,7 @@ HTML
 );
 foreach ($peoples as $people){
     $webPage->appendContent(<<<HTML
+<a href="people.php?peopleId={$people->getId()}">
 <div class="people__info">
 <img src="image.php?imageId={$people->getAvatarId()}">
 <div class="people__text">
@@ -48,6 +49,7 @@ foreach ($peoples as $people){
     <div class="people__name">{$people->getName()}</div>
 </div>
 </div>
+</a>
 HTML);
 }
 echo $webPage->toHTML();
