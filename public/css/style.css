@@ -38,11 +38,33 @@ body {
 span{
     display: flex;
     justify-content: center;
-    border: black solid;
 }
 .lienMovie{
     display: flex;
     flex:1;
+}
+a{
+    display: flex;
+    flex:1;
+    background-color: black;
+}
+a:link {
+    text-decoration: none;
+    color: white;
+    font-family:cursive;
+}
+a:visited {
+    text-decoration: none;
+    color: white;
+    font-family:cursive;
+}
+.img_movie{
+    width: 200px;
+    transition: transform .1s;
+}
+.img_movie:hover{
+    -ms-transform: scale(1.2); /* IE 9 */
+    transform: scale(1.2);
 }
 .movie__info{
     display: flex;
@@ -101,4 +123,11 @@ span{
 }
 .movie__role{
     flex:1;
+}
+
+@media screen and (min-width:1000px){
+    body{
+        width: 1000px;
+        margin:auto;
+    }
 }
