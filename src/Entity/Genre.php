@@ -27,20 +27,20 @@ class Genre
     {
         return $this->name;
     }
-    public function getMovie():string
+
+    public static function findById(int $id): Genre
     {
         $pdo = MyPdo::getInstance()->prepare(
             <<<'SQL'
-                SELECT movieId
-                from movie_genre
-                where genreId = :idGenre
-            SQL
-        );
-        $pdo->bindValue(':idGenre', $this->getId());
+                SELECT id,name
+                from genre
+                where id = :idGenre
+            SQL);
+        $pdo->bindValue(':idGenre', $id);
         $pdo->execute();
         $pdo->setFetchMode(PDO::FETCH_CLASS, Genre::class);
         if (($genre = $pdo->fetch()) === false) {
-            throw new EntityNotFoundException("l'id ne correspond à aucun film");
+            throw new EntityNotFoundException("l'id ne correspond à aucun genre");
         }
         return $genre;
     }
