@@ -7,6 +7,7 @@ namespace Html;
 class AppWebPage extends WebPage
 {
     private string $menu ="";
+    private string $header="";
     public function __construct(string $title="")
     {
         parent::__construct($title);
@@ -16,10 +17,18 @@ class AppWebPage extends WebPage
     {
         return $this->menu;
     }
+    public function getHeader():string
+    {
+        return $this->header;
+    }
 
     public function appendMenu(string $menu): void
     {
         $this->menu.=$menu;
+    }
+    public function appendHeader(string $header): void
+    {
+        $this->header.=$header;
     }
 
     public function toHTML(): string
@@ -36,6 +45,7 @@ class AppWebPage extends WebPage
             <body>
                 <header class="header">
                     <h1>{$this->getTitle()}</h1>
+                    {$this->getHeader()}
                 </header>
                 <main class="menu">
                     {$this->getMenu()}
