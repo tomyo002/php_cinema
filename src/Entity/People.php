@@ -71,7 +71,7 @@ private string $placeOfBirth;
     {
         return $this->placeOfBirth;
     }
-    public function getRole($movieId):string
+    public function getRole(int $movieId):string
     {
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'

@@ -10,8 +10,8 @@ use PDO;
 
 class Movie
 {
-    private int $id;
-    private int $posterId;
+    private ?int $id;
+    private ?int $posterId;
     private string $originalLanguage;
     private string $originalTitle;
     private string $overview;
@@ -92,6 +92,78 @@ class Movie
         return $this->title;
     }
 
+    /**
+     * @param int $id
+     */
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param int $posterId
+     */
+    public function setPosterId(?int $posterId): void
+    {
+        $this->posterId = $posterId;
+    }
+
+    /**
+     * @param string $originalLanguage
+     */
+    public function setOriginalLanguage(string $originalLanguage): void
+    {
+        $this->originalLanguage = $originalLanguage;
+    }
+
+    /**
+     * @param string $originalTitle
+     */
+    public function setOriginalTitle(string $originalTitle): void
+    {
+        $this->originalTitle = $originalTitle;
+    }
+
+    /**
+     * @param string $overview
+     */
+    public function setOverview(string $overview): void
+    {
+        $this->overview = $overview;
+    }
+
+    /**
+     * @param string $releaseDate
+     */
+    public function setReleaseDate(string $releaseDate): void
+    {
+        $this->releaseDate = $releaseDate;
+    }
+
+    /**
+     * @param int $runtime
+     */
+    public function setRuntime(int $runtime): void
+    {
+        $this->runtime = $runtime;
+    }
+
+    /**
+     * @param string $tagline
+     */
+    public function setTagline(string $tagline): void
+    {
+        $this->tagline = $tagline;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
     public static function findById(int $id): Movie
     {
         $pdo = MyPdo::getInstance()->prepare(
@@ -127,5 +199,70 @@ SQL
         }
         return $people;
 
+    }
+    public static function create(?int $id,string $title,string $overview,string $originalTitle,string $releaseDate,?string $posterId=null,string $tagline):Movie
+    {
+        $movie = new Movie();
+        $movie->setId($id);
+        $movie->setTagline($tagline);
+        $movie->setTitle($title);
+        $movie->setOverview($overview);
+        $movie->setOriginalTitle($originalTitle);
+        $movie->setReleaseDate($releaseDate);
+        $movie->setPosterId($posterId);
+        return $movie;
+    }
+    public function delete(): Movie
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+    DELETE FROM movie
+    WHERE id = :movieId
+SQL
+        );
+        $stmt->execute([':movieId' => $this->getId()]);
+        $this->setId(null);
+        return $this;
+    }
+    public function update(): Movie
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+    UPDATE Artist
+    set title= :movietitle,
+    tagline= :movietagline,
+    releaseDate= :moviereleasedate,
+    overview= :movieOverview,
+    originaltitle= :movieoriginaltitle,
+    runtime = :movieruntime,
+    originallanguage= :movieoriginallanguage
+    WHERE id = :movieid
+SQL
+        );
+        $stmt->execute([':movietitle' => $this->getTitle(), ':movietagline' => $this->getTagline(),':movieid'=>$this->getId(),':moviereleasedate'=>$this->getReleaseDate(),':movieOverview'=>$this->getOverview(),':movieoriginaltitle'=>$this->getOriginalTitle(),':movieruntime'=>$this->getRuntime(),':movieoriginallanguage'=>$this->getOriginalLanguage()]);
+        return $this;
+    }
+
+    public function insert(): Movie
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+    INSERT INTO Movie (title,tagline,releasedate,overview,orignaltitle,runtime,originallanguage)
+    VALUES(:movietitle,:movietagline,:moviedate,:movieoverview,:movieoriginaltitle,:movieruntime,:movieorignallanguage)
+SQL
+        );
+        $stmt->execute([':movietitle'=>$this->getTitle(),':movietagline'=>$this->getTagline(),':moviedate'=>$this->getReleaseDate(),':movieoverview'=>$this->getOverview(),':movieoriginaltitle'=>$this->getOriginalTitle(),':movieruntime'=>$this->getRuntime(),':movieorignallanguage'=>$this->getOriginalLanguage()]);
+        $this->setId((int) MyPdo::getInstance()->lastInsertId());
+        return $this;
+    }
+
+    public function save(): Movie
+    {
+        if ($this->getId() === null) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+        return $this;
     }
 }
