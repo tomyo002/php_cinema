@@ -29,6 +29,13 @@ if($movie->getPosterId()===null){
 
 $webPage->setTitle("Titre -".$movie->getTitle());
 $webPage->appendHeader('<a href="index.php">accueil</a>');
+$webPage->appendMenu(<<<HTML
+    <a href="admin/artist-form.php?movieId={$movie->getId()}">modifier</a>
+    <a href="admin/artist-delete.php?movieId={$movie->getId()}">supprimer</a>
+HTML
+
+
+);
 $webPage->appendContent(<<<HTML
 <div class="movie__info">
     <img src="$png" clas="img_movie">
