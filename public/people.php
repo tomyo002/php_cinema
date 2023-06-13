@@ -26,7 +26,7 @@ $pngActor = "img/actor.jpeg";
 if($people->getAvatarId()!==null) {
     $pngActor="image.php?imageId=".$people->getAvatarId();
 }
-$webPage->setTitle('Films-'.$people->getName().'<a href="index.php">accueil</a>');
+$webPage->setTitle('Films-'.$people->getName().'<a href="index.php" class="welcome">accueil</a>');
 $webPage->appendContent(<<<HTML
                             <div class="people">
                                         <img src="$pngActor">
