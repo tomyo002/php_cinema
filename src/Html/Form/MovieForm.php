@@ -48,7 +48,7 @@ class MovieForm
     </label>
     <label>
     Id du Poster
-    <input name="posterid" type="text" value="{$this->escapeString($this->movie?->getPosterId())}" placeholder="Facultatif" >
+    <input name="posterid" type="number" value="{$this->movie?->getPosterId()}" placeholder="Facultatif" >
     </label>
     <label>
     Slogan
