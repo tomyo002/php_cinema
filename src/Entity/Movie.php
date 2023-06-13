@@ -21,17 +21,17 @@ class Movie
     private string $title;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPosterId(): int
+    public function getPosterId(): ?int
     {
         return $this->posterId;
     }
@@ -93,7 +93,7 @@ class Movie
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      */
     public function setId(?int $id): void
     {
@@ -101,7 +101,7 @@ class Movie
     }
 
     /**
-     * @param int $posterId
+     * @param int|null $posterId
      */
     public function setPosterId(?int $posterId): void
     {
@@ -200,7 +200,7 @@ SQL
         return $people;
 
     }
-    public static function create(?int $id,string $title,string $overview,string $originalTitle,string $releaseDate,?string $posterId=null,string $tagline):Movie
+    public static function create(?int $id,string $title,string $overview,string $originalTitle,string $releaseDate,?int $posterId,string $tagline,int $runtime,string $originallanguage):Movie
     {
         $movie = new Movie();
         $movie->setId($id);
@@ -209,7 +209,9 @@ SQL
         $movie->setOverview($overview);
         $movie->setOriginalTitle($originalTitle);
         $movie->setReleaseDate($releaseDate);
-        $movie->setPosterId($posterId);
+        $movie->setPosterId((int)$posterId);
+        $movie->setRuntime((int)$runtime);
+        $movie->setOriginalLanguage($originallanguage);
         return $movie;
     }
     public function delete(): Movie
@@ -228,10 +230,10 @@ SQL
     {
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
-    UPDATE Artist
+    UPDATE movie
     set title= :movietitle,
     tagline= :movietagline,
-    releaseDate= :moviereleasedate,
+    releaseDate= str_to_date(:moviereleasedate,"%Y-%m-%d"),
     overview= :movieOverview,
     originaltitle= :movieoriginaltitle,
     runtime = :movieruntime,
@@ -247,8 +249,8 @@ SQL
     {
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
-    INSERT INTO Movie (title,tagline,releasedate,overview,orignaltitle,runtime,originallanguage)
-    VALUES(:movietitle,:movietagline,:moviedate,:movieoverview,:movieoriginaltitle,:movieruntime,:movieorignallanguage)
+    INSERT INTO movie (title,tagline,releasedate,overview,originaltitle,runtime,originallanguage)
+    VALUES(:movietitle,:movietagline,str_to_date(:moviedate,"%Y-%m-%d"),:movieoverview,:movieoriginaltitle,:movieruntime,:movieorignallanguage)
 SQL
         );
         $stmt->execute([':movietitle'=>$this->getTitle(),':movietagline'=>$this->getTagline(),':moviedate'=>$this->getReleaseDate(),':movieoverview'=>$this->getOverview(),':movieoriginaltitle'=>$this->getOriginalTitle(),':movieruntime'=>$this->getRuntime(),':movieorignallanguage'=>$this->getOriginalLanguage()]);
