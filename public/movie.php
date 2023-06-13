@@ -27,7 +27,7 @@ if($movie->getPosterId()===null){
     $png='img/movie.png';
 }
 
-$webPage->setTitle("Titre -".$movie->getTitle());
+$webPage->setTitle("Titre -".$movie->getTitle().'<a href="index.php">accueil</a>');
 $webPage->appendContent(<<<HTML
 <div class="movie__info">
     <img src="$png" clas="img_movie">
