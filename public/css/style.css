@@ -16,6 +16,9 @@ body {
     flex-direction: column;
 
 }
+.menu{
+    display:flex;
+}
 .menu a{
     display:flex;
     justify-content: space-around;
