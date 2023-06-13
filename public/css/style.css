@@ -124,8 +124,9 @@ a:visited {
     justify-content: space-evenly;
 
 }
-
-
+.movie__role{
+    flex:1;
+}
 @media screen and (min-width:1000px){
     body{
         width: 1000px;
