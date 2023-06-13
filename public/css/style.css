@@ -11,6 +11,9 @@ body {
     background-size:cover;
     color:white;
 }
+.content{
+    background-color: rgba(0,0,0,0.6);
+}
 .header{
     display: flex;
     flex-direction: column;
@@ -37,6 +40,7 @@ body {
 }
 .footer{
     display:flex;
+    background-color: rgba(0,0,0,0.6);
 }
 .list{
     display: flex;
@@ -47,6 +51,7 @@ body {
     display: flex;
     flex-direction: column;
     max-width:240px ;
+    background-color: rgba(0,0,0,0.6);
 }
 
 span{
