@@ -30,7 +30,7 @@ if($movie->getPosterId()===null){
 $webPage->setTitle("Titre -".$movie->getTitle());
 $webPage->appendContent(<<<HTML
 <div class="movie__info">
-    <img src="$png">
+    <img src="$png" clas="img_movie">
     <div class="movie__text">
         <div class="title__date">
             <div class="movie__title">{$movie->getTitle()}</div>

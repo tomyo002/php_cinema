@@ -7,11 +7,13 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    background-image:url("../img/cinema.png");
+    background-size:cover;
+    color:white;
 }
 .header{
     display: flex;
     justify-content: center;
-    border: solid black;
 }
 
 .content {
@@ -38,11 +40,39 @@ body {
 span{
     display: flex;
     justify-content: center;
-    border: black solid;
 }
 .lienMovie{
     display: flex;
     flex:1;
+}
+.img_movie_fromPeople{
+    max-width:120px;
+    max-height: 150px;
+}
+a{
+    display: flex;
+    flex:1;
+}
+a:link {
+    text-decoration: none;
+    color: white;
+    font-family:cursive;
+    font-size:large;
+}
+a:visited {
+    text-decoration: none;
+    color: white;
+    font-family:cursive;
+}
+.img_movie{
+    width: 200px;
+    transition: transform .1s;
+}
+.img_movie:hover{
+    -ms-transform: scale(1.2); /* IE 9 */
+    transform: scale(1.2);
+    -webkit-box-shadow: 5px 5px 15px 5px #292C99;
+    box-shadow: 5px 5px 15px 5px #292C99;
 }
 .movie__info{
     display: flex;
@@ -91,13 +121,8 @@ span{
 }
 .movie__text3{
     display: flex;
-    flex:1;
-}
-.movie__name{
-    flex:1;
-}
-.movie__date{
-    flex:1;
+    justify-content: space-evenly;
+
 }
 .movie__role{
     flex:1;

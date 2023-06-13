@@ -54,7 +54,7 @@ foreach ($movies as $movie){
     $webPage->appendContent(<<<HTML
             <a href="movie.php?movieId={$movie->getId()}" class="lienMovie">
                 <div class="movie__info">
-                    <img src="image.php?imageId={$movie->getPosterId()}">
+                    <img src="image.php?imageId={$movie->getPosterId()}" class="img_movie_fromPeople">
                     <div class="movie__text2">
                         <div class="movie__text3">
                             <span class="movie__name">{$movie->getTitle()}</span>
