@@ -54,6 +54,14 @@ class MovieForm
     Slogan
     <input name="tagline" type="text" value="{$this->escapeString($this->movie?->getTagline())}" required>
     </label>
+     <label>
+    durée
+    <input name="runtime" type="number" value="{$this->movie?->getRuntime()}" required>
+    </label>
+     <label>
+    langage original
+    <input name="originallanguage" type="text" value="{$this->escapeString($this->movie?->getOriginalLanguage())}" required>
+    </label>
     <button type="submit">Enregistrer</button>
 </form>
 HTML;
@@ -79,6 +87,12 @@ HTML;
         if (!isset($_POST['tagline']) || empty($this->stripTagsAndTrim($_POST['tagline']))) {
             throw new ParameterException("le film n'a pas de slogan");
         }
+        if (!isset($_POST['runtime']) || empty($this->stripTagsAndTrim($_POST['runtime']))) {
+            throw new ParameterException("le film n'a pas de duree");
+        }
+        if (!isset($_POST['originallanguage']) || empty($this->stripTagsAndTrim($_POST['originallanguage']))) {
+            throw new ParameterException("le film n'a pas de langage original");
+        }
         $movieposterid=null;
         if (isset($_POST['tagline']) ) {
             $movieposterid = $this->stripTagsAndTrim($_POST['posterid']);
@@ -88,7 +102,9 @@ HTML;
         $movieoriginaltitle = $this->stripTagsAndTrim($_POST['originaltitle']);
         $moviereleasedate = $this->stripTagsAndTrim($_POST['releasedate']);
         $movietagline = $this->stripTagsAndTrim($_POST['tagline']);
+        $movieruntime = $this->stripTagsAndTrim($_POST['runtime']);
+        $movieoriginallang = $this->stripTagsAndTrim($_POST['originallanguage']);
 
-        $this->movie = Movie::create($movieId, $movietitle,$movieoverview,$movieoriginaltitle,$moviereleasedate,$movietagline,$movieposterid);
+        $this->movie = Movie::create($movieId, $movietitle,$movieoverview,$movieoriginaltitle,$moviereleasedate,$movieposterid,$movietagline,(int)$movieruntime,$movieoriginallang);
     }
 }
