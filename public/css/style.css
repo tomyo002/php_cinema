@@ -14,7 +14,6 @@ body {
 .header{
     display: flex;
     justify-content: center;
-    border: solid black;
 }
 
 .content {
@@ -45,6 +44,10 @@ span{
 .lienMovie{
     display: flex;
     flex:1;
+}
+.img_movie_fromPeople{
+    max-width:120px;
+    max-height: 150px;
 }
 a{
     display: flex;
@@ -118,17 +121,10 @@ a:visited {
 }
 .movie__text3{
     display: flex;
-    flex:1;
+    justify-content: space-evenly;
+
 }
-.movie__name{
-    flex:1;
-}
-.movie__date{
-    flex:1;
-}
-.movie__role{
-    flex:1;
-}
+
 
 @media screen and (min-width:1000px){
     body{
