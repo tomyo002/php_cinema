@@ -11,7 +11,7 @@ use PDO;
 class Movie
 {
     private int $id;
-    private int $posterId;
+    private ?int $posterId;
     private string $originalLanguage;
     private string $originalTitle;
     private string $overview;
@@ -92,6 +92,78 @@ class Movie
         return $this->title;
     }
 
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param int $posterId
+     */
+    public function setPosterId(?int $posterId): void
+    {
+        $this->posterId = $posterId;
+    }
+
+    /**
+     * @param string $originalLanguage
+     */
+    public function setOriginalLanguage(string $originalLanguage): void
+    {
+        $this->originalLanguage = $originalLanguage;
+    }
+
+    /**
+     * @param string $originalTitle
+     */
+    public function setOriginalTitle(string $originalTitle): void
+    {
+        $this->originalTitle = $originalTitle;
+    }
+
+    /**
+     * @param string $overview
+     */
+    public function setOverview(string $overview): void
+    {
+        $this->overview = $overview;
+    }
+
+    /**
+     * @param string $releaseDate
+     */
+    public function setReleaseDate(string $releaseDate): void
+    {
+        $this->releaseDate = $releaseDate;
+    }
+
+    /**
+     * @param int $runtime
+     */
+    public function setRuntime(int $runtime): void
+    {
+        $this->runtime = $runtime;
+    }
+
+    /**
+     * @param string $tagline
+     */
+    public function setTagline(string $tagline): void
+    {
+        $this->tagline = $tagline;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
     public static function findById(int $id): Movie
     {
         $pdo = MyPdo::getInstance()->prepare(
@@ -127,5 +199,17 @@ SQL
         }
         return $people;
 
+    }
+    public static function create(?int $id,string $title,string $overview,string $originalTitle,string $releaseDate,?string $posterId=null,string $tagline):Movie
+    {
+        $movie = new Movie();
+        $movie->setId($id);
+        $movie->setTagline($tagline);
+        $movie->setTitle($title);
+        $movie->setOverview($overview);
+        $movie->setOriginalTitle($originalTitle);
+        $movie->setReleaseDate($releaseDate);
+        $movie->setPosterId($posterId);
+        return $movie;
     }
 }
