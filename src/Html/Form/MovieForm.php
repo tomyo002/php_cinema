@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1)
+declare(strict_types=1);
 namespace Html\Form;
 
 use Entity\Exception\ParameterException;
@@ -12,7 +12,7 @@ class MovieForm
 
     private ?Movie $movie;
 
-    private function __construct(?Movie $movie)
+    public function __construct(?Movie $movie =null)
     {
         $this->movie = $movie;
     }
