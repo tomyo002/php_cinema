@@ -7,7 +7,9 @@ use Entity\Collection\MovieCollection;
 use Html\AppWebPage;
 
 $webPage = new AppWebPage('films');
-
+$webPage->appendMenu(<<<HTML
+    <a href="admin/movie_form.php">ajouter</a>
+HTML);
 $webPage->appendContent(<<<HTML
                         <div class="list">
 
