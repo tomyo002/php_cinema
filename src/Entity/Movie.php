@@ -229,13 +229,13 @@ SQL
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
     UPDATE Artist
-    set title= :movietitle
-    set tagline= :movietagline
-    set releaseDate= :moviereleasedate
-    set overview= :movieOverview
-    set originaltitle= :movieoriginaltitle
-    set runtime = :movieruntime
-    set originallanguage= :movieoriginallanguage
+    set title= :movietitle,
+    tagline= :movietagline,
+    releaseDate= :moviereleasedate,
+    overview= :movieOverview,
+    originaltitle= :movieoriginaltitle,
+    runtime = :movieruntime,
+    originallanguage= :movieoriginallanguage
     WHERE id = :movieid
 SQL
         );
