@@ -52,7 +52,7 @@ foreach ($peoples as $people){
 <div class="people__info">
 <img src="image.php?imageId={$people->getAvatarId()}&type=actor">
 <div class="people__text">
-    <div class="people__role">{$people->getRole($movie->getId())}-></div>
+    <div class="people__role">{$people->getRole($movie->getId())}</div>
     <div class="people__name">{$people->getName()}</div>
 </div>
 </div>

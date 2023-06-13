@@ -82,7 +82,7 @@ private string $placeOfBirth;
 SQL
         );
         $stmt->execute([':id' => $this->getId(),':movieId'=>$movieId]);
-        return $stmt->Fetch()['role'];
+        return $stmt->fetch()['role'];
     }
 
     public static function findById(int $id): People
