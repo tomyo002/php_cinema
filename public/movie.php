@@ -30,8 +30,8 @@ if($movie->getPosterId()===null){
 $webPage->setTitle("Titre -".$movie->getTitle());
 $webPage->appendHeader('<a href="index.php" class="welcome">accueil</a>');
 $webPage->appendMenu(<<<HTML
-    <a href="admin/artist-form.php?movieId={$movie->getId()}">modifier</a>
-    <a href="admin/artist-delete.php?movieId={$movie->getId()}">supprimer</a>
+    <a href="admin/movie-form.php?movieId={$movie->getId()}">modifier</a>
+    <a href="admin/movie-delete.php?movieId={$movie->getId()}">supprimer</a>
 HTML
 
 
