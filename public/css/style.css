@@ -14,14 +14,19 @@ body {
 .header{
     display: flex;
     flex-direction: column;
-
 }
 .menu{
     display:flex;
+    justify-content: space-around;
 }
 .menu a{
+    border: solid white;
     display:flex;
-    justify-content: space-around;
+    flex:0;
+}
+.menu a:hover{
+    -ms-transform: scale(1.2); /* IE 9 */
+    transform: scale(1.2);
 }
 .content {
     display: flex;
@@ -56,15 +61,22 @@ span{
     max-width:120px;
     max-height: 150px;
 }
-a{
+a:not(.welcome,.menu a){
     display: flex;
     flex:1;
 }
 h1{
     text-align:center;
 }
-.header a{
+.welcome{
+    display: flex;
     justify-content: center;
+    flex: 0;
+
+}
+.welcome:hover{
+    -ms-transform: scale(1.2); /* IE 9 */
+    transform: scale(1.2);
 }
 a:link {
     text-decoration: none;
