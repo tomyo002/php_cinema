@@ -16,7 +16,10 @@ body {
     flex-direction: column;
 
 }
-
+.menu a{
+    display:flex;
+    justify-content: space-around;
+}
 .content {
     display: flex;
     flex: 1;
