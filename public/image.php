@@ -7,8 +7,15 @@ use Entity\Exception\ParameterException;
 use Entity\Image;
 
 try {
-    if(!isset($_GET['imageId'])) {
-        throw new ParameterException("L' imageId n'est pas défini");
+    if(empty($_GET['imageId'])) {
+        if(isset($_GET['type'])&&$_GET['type']=='movie'){
+            header('Location: /img/movie.png',true,302);
+            exit();
+        }
+        else{
+            header('Location: /img/actor.jpeg',true,302);
+            exit();
+        }
     }
     if(!ctype_digit($_GET['imageId'])) {
         throw new ParameterException("imageId n'est pas un entier");

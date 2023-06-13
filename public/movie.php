@@ -22,11 +22,6 @@ try {
     exit();
 }
 $peoples= $movie->getPeople();
-$png="image.php?imageId=".$movie->getPosterId();
-if($movie->getPosterId()===null){
-    $png='img/movie.png';
-}
-
 $webPage->setTitle("Titre -".$movie->getTitle());
 $webPage->appendHeader('<a href="index.php" class="welcome">accueil</a>');
 $webPage->appendMenu(<<<HTML
@@ -38,12 +33,11 @@ HTML
 );
 $webPage->appendContent(<<<HTML
 <div class="movie__info">
-    <img src="$png" clas="img_movie">
+    <img src="image.php?imageId={$movie->getPosterId()}&type=movie" class="img_movie">
     <div class="movie__text">
         <div class="title__date">
             <div class="movie__title">{$movie->getTitle()}</div>
-            <div class="movie__date">{$movie->getReleaseDate()}</div>
-            
+            <div class="movie__date">{$movie->getReleaseDate()}</div>           
         </div>
         <div class="movie__originalTitle">{$movie->getOriginalTitle()}</div>
         <div class="movie__TagLine">{$movie->getTagline()}</div>    
@@ -53,14 +47,10 @@ $webPage->appendContent(<<<HTML
 HTML
 );
 foreach ($peoples as $people){
-    $pngActor="image.php?imageId=".$people->getAvatarId();
-if($people->getAvatarId()===null){
-    $pngActor="img/actor.jpeg";
-}
     $webPage->appendContent(<<<HTML
 <a href="people.php?peopleId={$people->getId()}">
 <div class="people__info">
-<img src="$pngActor">
+<img src="image.php?imageId={$people->getAvatarId()}&type=actor">
 <div class="people__text">
     <div class="people__role">{$people->getRole($movie->getId())}-></div>
     <div class="people__name">{$people->getName()}</div>
