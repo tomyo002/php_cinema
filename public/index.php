@@ -9,6 +9,7 @@ use Html\AppWebPage;
 $webPage = new AppWebPage('films');
 $webPage->appendMenu(<<<HTML
     <a href="admin/movie-form.php">ajouter</a>
+    <a href="admin/genre-form.php">filtre</a>
 HTML);
 $webPage->appendContent(<<<HTML
                         <div class="list">
