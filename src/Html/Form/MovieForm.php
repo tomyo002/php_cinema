@@ -30,7 +30,7 @@ class MovieForm
     public function getHtmlForm(string $action): string
     {
         return <<<HTML
-    <form name="movieform" method="post" action="$action" class="movie__form">
+    <form name="movieform" method="post" action="$action" class="movie__form" xmlns="http://www.w3.org/1999/html">
     <input name="id" type="hidden" value="{$this->movie?->getId()}">
     <input name="posterid" type="hidden" value="{$this->movie?->getPosterId()}">
     
@@ -40,7 +40,7 @@ class MovieForm
     </label>
     <label>
     Resumé
-    <input name="overview" type="text" value="{$this->escapeString($this->movie?->getOverview())}" required>
+    <textarea name="overview" " required>{$this->escapeString($this->movie?->getOverview())}</textarea>
     </label>
     <label>
     Titre originel
