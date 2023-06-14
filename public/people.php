@@ -34,11 +34,11 @@ $webPage->appendContent(<<<HTML
                         HTML);
 $dateOfDead='';
 if($people->getDeathday() !=null) {
-    $dateOfDead=$people->getDeathdayVisual();
+    $dateOfDead=$people->transformFrenchDate($people->getDeathday());
 }
 $webPage->appendContent(<<<HTML
                                             <article class="year">
-                                                <span class="date__bird">{$people->getBirthdayVisual()}</span>
+                                                <span class="date__bird">{$people->transformFrenchDate($people->getBirthday())}</span>
                                                 <h1>-</h1>
                                                 <span class="date__Death">$dateOfDead</span>
                                             </article>
@@ -55,7 +55,7 @@ foreach ($movies as $movie) {
                     <div class="movie__text2">
                         <div class="movie__text3">
                             <span class="movie__name">{$movie->getTitle()}</span>
-                            <span class="movie__date">{$movie->getReleaseDateVisual()}</span>
+                            <span class="movie__date">{$movie->transformFrenchDate($movie->getReleaseDate())}</span>
                         </div>  
                             <span class="movie__role">{$people->getRole($movie->getId())}</span>
                             
