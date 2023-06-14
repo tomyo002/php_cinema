@@ -238,10 +238,11 @@ SQL
     originaltitle= :movieoriginaltitle,
     runtime = :movieruntime,
     originallanguage= :movieoriginallanguage
+    posterId= :movieposterid
     WHERE id = :movieid
 SQL
         );
-        $stmt->execute([':movietitle' => $this->getTitle(), ':movietagline' => $this->getTagline(),':movieid'=>$this->getId(),':moviereleasedate'=>$this->getReleaseDate(),':movieOverview'=>$this->getOverview(),':movieoriginaltitle'=>$this->getOriginalTitle(),':movieruntime'=>$this->getRuntime(),':movieoriginallanguage'=>$this->getOriginalLanguage()]);
+        $stmt->execute([':movietitle' => $this->getTitle(), ':movietagline' => $this->getTagline(),':movieid'=>$this->getId(),':moviereleasedate'=>$this->getReleaseDate(),':movieOverview'=>$this->getOverview(),':movieoriginaltitle'=>$this->getOriginalTitle(),':movieruntime'=>$this->getRuntime(),':movieoriginallanguage'=>$this->getOriginalLanguage(),':movieposterid'=>$this->getPosterId()]);
         return $this;
     }
 
@@ -249,11 +250,11 @@ SQL
     {
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
-    INSERT INTO movie (title,tagline,releasedate,overview,originaltitle,runtime,originallanguage)
-    VALUES(:movietitle,:movietagline,str_to_date(:moviedate,"%Y-%m-%d"),:movieoverview,:movieoriginaltitle,:movieruntime,:movieorignallanguage)
+    INSERT INTO movie (title,tagline,releasedate,overview,originaltitle,runtime,originallanguage,posterid)
+    VALUES(:movietitle,:movietagline,str_to_date(:moviedate,"%Y-%m-%d"),:movieoverview,:movieoriginaltitle,:movieruntime,:movieorignallanguage,:posterid)
 SQL
         );
-        $stmt->execute([':movietitle'=>$this->getTitle(),':movietagline'=>$this->getTagline(),':moviedate'=>$this->getReleaseDate(),':movieoverview'=>$this->getOverview(),':movieoriginaltitle'=>$this->getOriginalTitle(),':movieruntime'=>$this->getRuntime(),':movieorignallanguage'=>$this->getOriginalLanguage()]);
+        $stmt->execute([':movietitle'=>$this->getTitle(),':movietagline'=>$this->getTagline(),':moviedate'=>$this->getReleaseDate(),':movieoverview'=>$this->getOverview(),':movieoriginaltitle'=>$this->getOriginalTitle(),':movieruntime'=>$this->getRuntime(),':movieorignallanguage'=>$this->getOriginalLanguage(),':posterid'=>$this->getPosterId()]);
         $this->setId((int) MyPdo::getInstance()->lastInsertId());
         return $this;
     }

@@ -9,7 +9,7 @@ use Entity\Image;
 try {
     if(empty($_GET['imageId'])) {
         if(isset($_GET['type'])&&$_GET['type']=='movie'){
-            header('Location: /img/movie.png',true,302);
+            header('Location: /img/movie.jpeg',true,302);
             exit();
         }
         else{
