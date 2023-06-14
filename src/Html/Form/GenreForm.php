@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Html\Form;
@@ -7,7 +8,7 @@ use Entity\Collection\genreCollection;
 
 class GenreForm
 {
-    public function getHtmlForm(string $action):string
+    public function getHtmlForm(string $action): string
     {
         $form = <<<HTML
      <form name="genre-form" method="post" action="$action" class="genre__form">

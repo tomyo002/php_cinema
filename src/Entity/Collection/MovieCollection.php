@@ -39,7 +39,7 @@ class MovieCollection
      * @return Movie|false
      */
 
-    public static function findByFilter(int $idFilter):array|false
+    public static function findByFilter(int $idFilter): array|false
     {
 
         $pdo = MyPdo::getInstance()->prepare(
@@ -50,7 +50,8 @@ class MovieCollection
                             from movie_genre
                             where genreId = :idGenre)
                 
-                SQL);
+                SQL
+        );
         $pdo->bindValue(':idGenre', $idFilter);
         $pdo->execute();
         $pdo->setFetchMode(PDO::FETCH_CLASS, Movie::class);

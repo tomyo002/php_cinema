@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Html\Form;
 
 use Entity\Exception\ParameterException;
@@ -96,7 +98,7 @@ HTML;
             throw new ParameterException("le film n'a pas de langage original");
         }
         $movieposterid=null;
-        if (isset($_POST['posterid']) ) {
+        if (isset($_POST['posterid'])) {
             $movieposterid = $this->stripTagsAndTrim($_POST['posterid']);
         }
         $movietitle = $this->stripTagsAndTrim($_POST['title']);
@@ -107,6 +109,6 @@ HTML;
         $movieruntime = $this->stripTagsAndTrim($_POST['runtime']);
         $movieoriginallang = $this->stripTagsAndTrim($_POST['originallanguage']);
 
-        $this->movie = Movie::create($movieId, $movietitle,$movieoverview,$movieoriginaltitle,$moviereleasedate,(int)$movieposterid,$movietagline,(int)$movieruntime,$movieoriginallang);
+        $this->movie = Movie::create($movieId, $movietitle, $movieoverview, $movieoriginaltitle, $moviereleasedate, (int)$movieposterid, $movietagline, (int)$movieruntime, $movieoriginallang);
     }
 }

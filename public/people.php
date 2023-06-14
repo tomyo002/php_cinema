@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Entity\Exception\EntityNotFoundException;
@@ -46,7 +47,7 @@ $webPage->appendContent(<<<HTML
                                     </div>
 
                         HTML);
-foreach ($movies as $movie){
+foreach ($movies as $movie) {
     $webPage->appendContent(<<<HTML
             <a href="movie.php?movieId={$movie->getId()}" class="lienMovie">
                 <div class="movie__info">

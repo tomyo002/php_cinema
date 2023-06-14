@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Entity\Exception\ParameterException;
@@ -13,7 +14,6 @@ try {
     exit();
 } catch (ParameterException) {
     http_response_code(400);
-} catch (Exception $e) {
-    var_dump($e);
-    /*http_response_code(500);*/
+} catch (Exception) {
+    http_response_code(500);
 }
