@@ -66,6 +66,10 @@ span{
     max-width:120px;
     max-height: 150px;
 }
+.img__actor{
+    max-width:300px;
+    max-height:450px;
+}
 a:not(.welcome,.menu a){
     display: flex;
     flex:1;
@@ -134,6 +138,7 @@ a:visited {
 }
 .people{
     display:flex;
+    flex-direction: column;
 }
 .year{
     display: flex;
@@ -168,6 +173,9 @@ a:visited {
 @media screen and (min-width:700px){
     .movie__info{
         flex-direction: row;
+    }
+    .people{
+        flex-direction: row
     }
 }
 @media screen and (min-width:1000px){
