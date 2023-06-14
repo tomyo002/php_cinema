@@ -48,7 +48,7 @@ class MovieForm
     </label>
     <label>
     Date de sortie
-    <input name="releasedate" type="text" value="{$this->escapeString($this->movie?->getReleaseDate())}" required>
+    <input name="releasedate" type="date" value="{$this->escapeString($this->movie?->getReleaseDate())}" required>
     </label>
     <label>
     Slogan
