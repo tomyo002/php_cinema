@@ -23,7 +23,8 @@ try {
     exit();
 }
 $movies= $people->getMovie();
-$webPage->setTitle('Films-'.$people->getName().'<a href="index.php" class="welcome">accueil</a>');
+$webPage->setTitle('Films-'.$people->getName());
+$webPage->appendHeader('<a href="index.php" class="welcome">accueil</a>');
 $webPage->appendContent(<<<HTML
                             <div class="people">
                                         <img src="image.php?imageId={$people->getAvatarId()}&type=actor" class="img__actor">
