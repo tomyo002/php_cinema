@@ -45,7 +45,7 @@ $webPage->appendContent(<<<HTML
                                             <span>{$people->getBiography()}</span>
                                         </article>
                                     </div>
-
+                                    <div class="movie__list">
                         HTML);
 foreach ($movies as $movie) {
     $webPage->appendContent(<<<HTML
@@ -65,4 +65,5 @@ foreach ($movies as $movie) {
 
 HTML);
 }
+$webPage->appendContent("</div>");
 echo $webPage->toHTML();
