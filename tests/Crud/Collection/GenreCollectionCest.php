@@ -5,7 +5,7 @@ use Entity\Genre;
 use Tests\CrudTester;
 class GenreCollectionCest
 {
-    public function findAll(CrudTester $I)
+    public function findAll(CrudTester $I):void
     {
         $expectedGenres = [
             ['id' => 28, 'name' => 'Action'],

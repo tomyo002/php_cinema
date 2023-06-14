@@ -19,7 +19,7 @@ class MovieCest
         });
     }
 
-    public function delete(CrudTester $I)
+    public function delete(CrudTester $I):void
     {
         $movie = Movie::findById(108);
         $movie->delete();
