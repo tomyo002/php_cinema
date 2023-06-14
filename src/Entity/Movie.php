@@ -381,4 +381,18 @@ SQL
         }
         return $this;
     }
+
+    /**
+     * Méthode qui découpe la date du film est la donne en français
+     * retourne une date
+     * @return string
+     */
+    public function getReleaseDateVisual():string
+    {
+        $date = explode('-',$this->releaseDate);
+        $year = $date[0];
+        $month = $date[1];
+        $day = $date[2];
+        return "$day/$month/$year";
+    }
 }

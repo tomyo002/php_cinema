@@ -37,7 +37,7 @@ $webPage->appendContent(<<<HTML
     <div class="movie__text">
         <div class="title__date">
             <div class="movie__title">{$movie->getTitle()}</div>
-            <div class="movie__date">{$movie->getReleaseDate()}</div>           
+            <div class="movie__date">{$movie->getReleaseDateVisual()}</div>           
         </div>
         <div class="movie__originalTitle">{$movie->getOriginalTitle()}</div>
         <div class="movie__TagLine">{$movie->getTagline()}</div>    
