@@ -17,6 +17,9 @@ private string $biography;
 private string $placeOfBirth;
 
     /**
+     * Accesseur d'id de people
+     * retourne une valeur sous forme de chiffre
+     *
      * @return int
      */
     public function getId(): int
@@ -25,6 +28,9 @@ private string $placeOfBirth;
     }
 
     /**
+     * Accesseur d'avatarId de people
+     * retourne une valeur sous forme de chiffre ou null
+     *
      * @return int|null
      */
     public function getAvatarId(): ?int
@@ -33,6 +39,9 @@ private string $placeOfBirth;
     }
 
     /**
+     * Accesseur la date de naissance de people
+     * retourne une valeur sous forme de chaîne de caractère
+     *
      * @return string
      */
     public function getBirthday(): string
@@ -41,6 +50,9 @@ private string $placeOfBirth;
     }
 
     /**
+     * Accesseur la date de mort de people
+     * retourne une valeur sous forme de chaîne de caractère ou null
+     *
      * @return string|null
      */
     public function getDeathday(): ?string
@@ -49,6 +61,9 @@ private string $placeOfBirth;
     }
 
     /**
+     * Accesseur le nom de people
+     * retourne une valeur sous forme de chaîne de caractère
+     *
      * @return string
      */
     public function getName(): string
@@ -57,6 +72,9 @@ private string $placeOfBirth;
     }
 
     /**
+     * Accesseur la biographie de people
+     * retourne une valeur sous forme de chaîne de caractère
+     *
      * @return string
      */
     public function getBiography(): string
@@ -65,12 +83,23 @@ private string $placeOfBirth;
     }
 
     /**
+     * Accesseur du lieu de naissance de people
+     * retourne une valeur sous forme de chaîne de caractère
+     *
      * @return string
      */
     public function getPlaceOfBirth(): string
     {
         return $this->placeOfBirth;
     }
+
+    /**
+     * Méthode qui donne le rôle de l'acteur avec l'id du film pris en paramètre
+     * retourne une chaîne de caractère
+     *
+     * @param int $movieId
+     * @return string
+     */
     public function getRole(int $movieId):string
     {
         $stmt = MyPdo::getInstance()->prepare(
@@ -85,6 +114,13 @@ SQL
         return $stmt->fetch()['role'];
     }
 
+    /**
+     * Méthode de classe qui récupère un people avec l'id pris en paramètre
+     * retourne un objet people
+     *
+     * @param int $id
+     * @return People
+     */
     public static function findById(int $id): People
     {
         $pdo= MyPdo::getInstance()->prepare(
@@ -101,6 +137,13 @@ SQL
         }
         return $people;
     }
+
+    /**
+     * Accesseur des films joué par l'acteur
+     * retourne un tableau de film
+     *
+     * @return Movie
+     */
     public function getMovie():array
     {
         $stmt = MyPdo::getInstance()->prepare(
