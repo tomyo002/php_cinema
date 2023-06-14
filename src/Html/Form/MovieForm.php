@@ -28,7 +28,7 @@ class MovieForm
     public function getHtmlForm(string $action): string
     {
         return <<<HTML
-    <form name="movieform" method="post" action="$action">
+    <form name="movieform" method="post" action="$action" class="movie__form">
     <input name="id" type="hidden" value="{$this->movie?->getId()}">
     <label>
     Titre

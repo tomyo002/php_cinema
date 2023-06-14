@@ -157,6 +157,11 @@ a:visited {
 .movie__role{
     flex:1;
 }
+.movie__form{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
 @media screen and (min-width:700px){
     .movie__info{
         flex-direction: row;
