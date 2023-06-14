@@ -309,7 +309,11 @@ SQL
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
     DELETE FROM movie
-    WHERE id = :movieId
+    WHERE id = :movieId;
+    DELETE FROM cast
+    WHERE movieid = :movieId;
+    DELETE FROM movie_genre
+    WHERE movieId= :movieId;
 SQL
         );
         $stmt->execute([':movieId' => $this->getId()]);

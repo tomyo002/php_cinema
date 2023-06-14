@@ -66,6 +66,10 @@ class MovieForm
 </form>
 HTML;
     }
+
+    /**
+     * @throws ParameterException
+     */
     public function setEntityFromQueryString(): void
     {
         $movieId = null;
