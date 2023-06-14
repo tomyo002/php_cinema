@@ -30,6 +30,8 @@ class MovieForm
         return <<<HTML
     <form name="movieform" method="post" action="$action" class="movie__form">
     <input name="id" type="hidden" value="{$this->movie?->getId()}">
+    <input name="posterid" type="hidden" value="{$this->movie?->getPosterId()}">
+    
     <label>
     Titre
     <input name="title" type="text" value="{$this->escapeString($this->movie?->getTitle())}" required>
@@ -47,10 +49,6 @@ class MovieForm
     <input name="releasedate" type="text" value="{$this->escapeString($this->movie?->getReleaseDate())}" required>
     </label>
     <label>
-    Id du Poster
-    <input name="posterid" type="number" value="{$this->movie?->getPosterId()}" placeholder="Facultatif" >
-    </label>
-    <label>
     Slogan
     <input name="tagline" type="text" value="{$this->escapeString($this->movie?->getTagline())}" required>
     </label>
@@ -58,7 +56,7 @@ class MovieForm
     durée
     <input name="runtime" type="number" value="{$this->movie?->getRuntime()}" required>
     </label>
-     <label>
+    <label>
     langage original
     <input name="originallanguage" type="text" value="{$this->escapeString($this->movie?->getOriginalLanguage())}" required>
     </label>

@@ -13,6 +13,7 @@ try {
     exit();
 } catch (ParameterException) {
     http_response_code(400);
-} catch (Exception) {
-    http_response_code(500);
+} catch (Exception $e) {
+    var_dump($e);
+    /*http_response_code(500);*/
 }
