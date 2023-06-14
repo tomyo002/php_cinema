@@ -12,7 +12,13 @@ class genreCollection
     private int $id;
     private string $name;
 
-    public static function findAll(): array
+    /**
+     * Méthode de classe qui récupère tous les genres de la base de donnée
+     * retourne un tableau de tous les genres
+     *
+     * @return Genre
+     */
+    public static function findAll(): Genre
     {
         $pdo = MyPdo::getInstance()->prepare(
             <<<'SQL'
