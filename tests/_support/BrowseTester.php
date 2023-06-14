@@ -17,9 +17,9 @@ namespace Tests;
  *
  * @SuppressWarnings(PHPMD)
 */
-class CrudTester extends \Codeception\Actor
+class BrowseTester extends \Codeception\Actor
 {
-    use _generated\CrudTesterActions;
+    use _generated\BrowseTesterActions;
 
     /**
      * Define custom actions here

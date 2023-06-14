@@ -21,12 +21,11 @@ class GenreForm
         <option value="default">--choisir une option--</option>
 HTML;
         foreach(genreCollection::findAll() as $genre) {
-            if($id == $genre->getId())
-            {
+            if($id == $genre->getId()) {
                 $form .= <<<HTML
          <option value="{$genre->getId()}"selected>{$genre->getName()}</option>
          HTML;
-            }else {
+            } else {
                 $form .= <<<HTML
          <option value="{$genre->getId()}">{$genre->getName()}</option>
 HTML;

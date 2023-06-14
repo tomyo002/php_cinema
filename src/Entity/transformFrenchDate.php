@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Entity;
@@ -12,7 +13,7 @@ trait transformFrenchDate
      * @param string $date
      * @return string
      */
-    public function transformFrenchDate(string $date):string
+    public function transformFrenchDate(string $date): string
     {
         return implode('/', array_reverse(explode('-', $date)));
     }
