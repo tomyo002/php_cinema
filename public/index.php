@@ -5,12 +5,14 @@ declare(strict_types=1);
 
 use Entity\Collection\MovieCollection;
 use Html\AppWebPage;
+use Html\Form\GenreForm;
 
 $webPage = new AppWebPage('films');
 $webPage->appendMenu(<<<HTML
     <a href="admin/movie-form.php">ajouter</a>
-    <a href="admin/genre-form.php">filtre</a>
 HTML);
+$formGenre = new GenreForm();
+$webPage->appendMenu($formGenre->getHtmlForm("filter.php"));
 $webPage->appendContent(<<<HTML
                         <div class="list">
 
