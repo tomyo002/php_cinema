@@ -1,0 +1,16 @@
+actor: BrowseTester
+modules:
+    enabled:
+        - \Tests\Helper\Browse
+        - Asserts
+        - PhpBrowser:
+              url: http://localhost:8080
+
+extensions:
+    enabled:
+        - Codeception\Extension\RunProcess:
+              # Run server on Windows platform (won't start on Linux)
+              0: bin\\run-test-server.bat
+              # Run server on Linux platform (won't start on Windows)
+              1: bin/run-test-server.sh
+              sleep: 1 # wait for php local web server to start
