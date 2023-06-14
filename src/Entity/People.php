@@ -163,4 +163,32 @@ SQL
         return $movie;
 
     }
+
+    /**
+     * Méthode qui découpe la date de naissance est la donne en français
+     * retourne une date
+     * @return string
+     */
+    public function getBirthdayVisual():string
+    {
+        $date = explode('-',$this->birthday);
+        $year = $date[0];
+        $month = $date[1];
+        $day = $date[2];
+        return "$day/$month/$year";
+    }
+
+    /**
+     * Méthode qui découpe la date de mort est la donne en français
+     * retourne une date
+     * @return string
+     */
+    public function getDeathdayVisual():string
+    {
+        $date = explode('-',$this->deathday);
+        $year = $date[0];
+        $month = $date[1];
+        $day = $date[2];
+        return "$day/$month/$year";
+    }
 }
