@@ -160,7 +160,10 @@ a:visited {
 .movie__form{
     display: flex;
     flex-direction: column;
-    justify-content:center;
+}
+.genre__form{
+    display: flex;
+    flex-direction: column;
 }
 @media screen and (min-width:700px){
     .movie__info{
