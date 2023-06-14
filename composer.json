@@ -39,12 +39,10 @@
             "php vendor/bin/php-cs-fixer fix"
         ],
         "test:crud":[
-            "Composer\\Config::disableProcessTimeout",
             "php vendor/bin/codecept run Crud"
         ],
         "test:codecept": [
             "php vendor/bin/codecept clean",
-            "Composer\\Config::disableProcessTimeout",
             "php vendor/bin/codecept run"
         ],
         "test": [

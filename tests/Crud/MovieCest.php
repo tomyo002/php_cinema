@@ -5,14 +5,14 @@ use Entity\Movie;
 use Tests\CrudTester;
 class MovieCest
 {
-    public function findById(CrudTester $I)
+    public function findById(CrudTester $I): void
     {
         $movie = Movie::findById(108);
         $I->assertSame(108, $movie->getId());
         $I->assertSame('Trois couleurs : Bleu', $movie->getTitle());
     }
 
-    public function findByIdThrowsExceptionIfArtistDoesNotExist(CrudTester $I)
+    public function findByIdThrowsExceptionIfArtistDoesNotExist(CrudTester $I): void
     {
         $I->expectThrowable(EntityNotFoundException::class, function () {
             Movie::findById(PHP_INT_MAX);
