@@ -18,7 +18,7 @@ class genreCollection
      *
      * @return Genre
      */
-    public static function findAll(): Genre
+    public static function findAll(): array
     {
         $pdo = MyPdo::getInstance()->prepare(
             <<<'SQL'

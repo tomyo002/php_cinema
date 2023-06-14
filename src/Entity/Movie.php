@@ -32,7 +32,8 @@ class Movie
     }
 
     /**
-     * Accesseur
+     * Accesseur du posterId de film
+     * retourne une valeur sous forme de chiffre ou null
      *
      * @return int|null
      */
@@ -42,6 +43,9 @@ class Movie
     }
 
     /**
+     * Accesseur de la langue originale de film
+     * retourne une valeur sous forme de chaîne de caractère
+     *
      * @return string
      */
     public function getOriginalLanguage(): string
@@ -50,6 +54,9 @@ class Movie
     }
 
     /**
+     * Accesseur du titre original de film
+     * retourne une valeur sous forme de chaîne de caractère
+     *
      * @return string
      */
     public function getOriginalTitle(): string
@@ -58,6 +65,9 @@ class Movie
     }
 
     /**
+     * Accesseur du résumé de film
+     * retourne une valeur sous forme de chaîne de caractère
+     *
      * @return string
      */
     public function getOverview(): string
@@ -66,6 +76,9 @@ class Movie
     }
 
     /**
+     * Accesseur de la date de réalisation de film
+     * retourne une valeur sous forme de chaîne de caractère
+     *
      * @return string
      */
     public function getReleaseDate(): string
@@ -74,6 +87,9 @@ class Movie
     }
 
     /**
+     * Accesseur de la durée du film
+     * retourne une valeur sous forme de chiffre
+     *
      * @return int
      */
     public function getRuntime(): int
@@ -82,6 +98,9 @@ class Movie
     }
 
     /**
+     * Accesseur du slogan du film
+     * retourne une valeur sous forme de chaîne de caractère
+     *
      * @return string
      */
     public function getTagline(): string
@@ -90,6 +109,9 @@ class Movie
     }
 
     /**
+     * Accesseur du titre du film
+     * retourne une valeur sous forme de chaîne de caractère
+     *
      * @return string
      */
     public function getTitle(): string
@@ -98,6 +120,8 @@ class Movie
     }
 
     /**
+     * Modificateur d'id qui prend en paramètre un int ou null
+     * ne retourne rien
      * @param int|null $id
      */
     public function setId(?int $id): void
@@ -106,6 +130,9 @@ class Movie
     }
 
     /**
+     * Modificateur de posterId qui prend en paramètre un int ou null
+     * ne retourne rien
+     *
      * @param int|null $posterId
      */
     public function setPosterId(?int $posterId): void
@@ -114,6 +141,9 @@ class Movie
     }
 
     /**
+     * Modificateur d'id qui prend en paramètre un string
+     * ne retourne rien
+     *
      * @param string $originalLanguage
      */
     public function setOriginalLanguage(string $originalLanguage): void
@@ -122,6 +152,9 @@ class Movie
     }
 
     /**
+     * Modificateur d'id qui prend en paramètre un string
+     * ne retourne rien
+     *
      * @param string $originalTitle
      */
     public function setOriginalTitle(string $originalTitle): void
@@ -130,6 +163,9 @@ class Movie
     }
 
     /**
+     * Modificateur d'id qui prend en paramètre un string
+     * ne retourne rien
+     *
      * @param string $overview
      */
     public function setOverview(string $overview): void
@@ -138,6 +174,9 @@ class Movie
     }
 
     /**
+     * Modificateur d'id qui prend en paramètre un string
+     * ne retourne rien
+     *
      * @param string $releaseDate
      */
     public function setReleaseDate(string $releaseDate): void
@@ -146,6 +185,9 @@ class Movie
     }
 
     /**
+     * Modificateur d'id qui prend en paramètre un int
+     * ne retourne rien
+     *
      * @param int $runtime
      */
     public function setRuntime(int $runtime): void
@@ -154,6 +196,9 @@ class Movie
     }
 
     /**
+     * Modificateur d'id qui prend en paramètre un string
+     * ne retourne rien
+     *
      * @param string $tagline
      */
     public function setTagline(string $tagline): void
@@ -162,6 +207,9 @@ class Movie
     }
 
     /**
+     * Modificateur d'id qui prend en paramètre un string
+     * ne retourne rien
+     *
      * @param string $title
      */
     public function setTitle(string $title): void
@@ -169,6 +217,13 @@ class Movie
         $this->title = $title;
     }
 
+    /**
+     * Méthode de classe qui récupère un film avec l'id pris en paramètre
+     * retourne un objet film
+     *
+     * @param int $id
+     * @return Movie
+     */
     public static function findById(int $id): Movie
     {
         $pdo = MyPdo::getInstance()->prepare(
@@ -186,6 +241,13 @@ class Movie
         }
         return $movie;
     }
+
+    /**
+     * Accesseur des acteurs de film
+     * retourne un tableau d'acteur
+     *
+     * @return People
+     */
     public function getPeople(): array
     {
         $stmt = MyPdo::getInstance()->prepare(
@@ -205,6 +267,22 @@ SQL
         return $people;
 
     }
+
+    /**
+     * Méthode de classe qui crée un objet avec les paramètres
+     * retourne un objet film
+     *
+     * @param int|null $id
+     * @param string $title
+     * @param string $overview
+     * @param string $originalTitle
+     * @param string $releaseDate
+     * @param int|null $posterId
+     * @param string $tagline
+     * @param int $runtime
+     * @param string $originallanguage
+     * @return Movie
+     */
     public static function create(?int $id,string $title,string $overview,string $originalTitle,string $releaseDate,?int $posterId,string $tagline,int $runtime,string $originallanguage):Movie
     {
         $movie = new Movie();
@@ -219,6 +297,13 @@ SQL
         $movie->setOriginalLanguage($originallanguage);
         return $movie;
     }
+
+    /**
+     * Méthode qui supprime l'objet de la base de donnée
+     * retourne lui-même
+     *
+     * @return $this
+     */
     public function delete(): Movie
     {
         $stmt = MyPdo::getInstance()->prepare(
@@ -231,6 +316,13 @@ SQL
         $this->setId(null);
         return $this;
     }
+
+    /**
+     * Méthode qui met à jour les données de la base
+     * retourne lui-même
+     *
+     * @return $this
+     */
     public function update(): Movie
     {
         $stmt = MyPdo::getInstance()->prepare(
@@ -250,6 +342,12 @@ SQL
         return $this;
     }
 
+    /**
+     * Méthode qui insert une donnée de la base
+     * retourne lui-même
+     *
+     * @return $this
+     */
     public function insert(): Movie
     {
         $stmt = MyPdo::getInstance()->prepare(
@@ -263,6 +361,12 @@ SQL
         return $this;
     }
 
+    /**
+     * Méthode qui utilise insert ou update en fonction de l'id du film
+     * retourne lui-même
+     *
+     * @return $this
+     */
     public function save(): Movie
     {
         if ($this->getId() === null) {

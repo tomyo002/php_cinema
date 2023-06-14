@@ -17,7 +17,7 @@ class MovieCollection
      *
      * @return Movie
      */
-    public static function findAll(): Movie
+    public static function findAll(): array
     {
         $pdo = MyPdo::getInstance()->prepare(
             <<<'SQL'
@@ -39,7 +39,7 @@ class MovieCollection
      * @return Movie|false
      */
 
-    public static function findByFilter(int $idFilter):Movie|false
+    public static function findByFilter(int $idFilter):array|false
     {
 
         $pdo = MyPdo::getInstance()->prepare(
