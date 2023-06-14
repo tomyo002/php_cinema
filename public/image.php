@@ -8,12 +8,11 @@ use Entity\Image;
 
 try {
     if(empty($_GET['imageId'])) {
-        if(isset($_GET['type'])&&$_GET['type']=='movie'){
-            header('Location: /img/movie.jpeg',true,302);
+        if(isset($_GET['type'])&&$_GET['type']=='movie') {
+            header('Location: /img/movie.jpeg', true, 302);
             exit();
-        }
-        else{
-            header('Location: /img/actor.jpeg',true,302);
+        } else {
+            header('Location: /img/actor.jpeg', true, 302);
             exit();
         }
     }

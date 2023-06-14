@@ -1,12 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 use Entity\Collection\MovieCollection;
 use Entity\Genre;
 use Html\AppWebPage;
 use Html\Form\GenreForm;
-if($_POST['genre']== "default"){
-    header('Location: index.php',true,302);
+
+if($_POST['genre']== "default") {
+    header('Location: index.php', true, 302);
     exit();
 }
 $genre = Genre::findById((int)$_POST['genre']);
@@ -22,8 +24,7 @@ $webPage->appendContent(<<<HTML
 
                         HTML);
 
-foreach(MovieCollection::findByFilter($genre->getId()) as $movie)
-{
+foreach(MovieCollection::findByFilter($genre->getId()) as $movie) {
     $webPage->appendContent(
         <<<HTML
         <a href="movie.php?movieId={$movie->getId()}" class="movie">

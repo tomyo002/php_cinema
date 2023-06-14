@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Entity\Exception\EntityNotFoundException;
@@ -16,7 +17,7 @@ if (!ctype_digit($_GET['movieId'])) {
     exit();
 }
 try {
-    $movie = Movie::findById( (int)$_GET['movieId']);
+    $movie = Movie::findById((int)$_GET['movieId']);
 } catch (EntityNotFoundException $e) {
     http_response_code(404);
     exit();
@@ -24,14 +25,14 @@ try {
 $peoples= $movie->getPeople();
 $webPage->setTitle("Titre -".$movie->getTitle());
 $webPage->appendHeader('<a href="index.php" class="welcome">accueil</a>');
-$webPage->appendMenu(<<<HTML
+$webPage->appendMenu(
+    <<<HTML
     <a href="admin/movie-form.php?movieId={$movie->getId()}">modifier</a>
     <a href="admin/movie-delete.php?movieId={$movie->getId()}">supprimer</a>
 HTML
-
-
 );
-$webPage->appendContent(<<<HTML
+$webPage->appendContent(
+    <<<HTML
 <div class="movie__info">
     <img src="image.php?imageId={$movie->getPosterId()}&type=movie" class="img_movie">
     <div class="movie__text">
@@ -46,7 +47,7 @@ $webPage->appendContent(<<<HTML
 </div>
 HTML
 );
-foreach ($peoples as $people){
+foreach ($peoples as $people) {
     $webPage->appendContent(<<<HTML
 <a href="people.php?peopleId={$people->getId()}">
 <div class="people__info">

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Entity;
@@ -48,7 +49,8 @@ class Genre
                 SELECT id,name
                 from genre
                 where id = :idGenre
-            SQL);
+            SQL
+        );
         $pdo->bindValue(':idGenre', $id);
         $pdo->execute();
         $pdo->setFetchMode(PDO::FETCH_CLASS, Genre::class);

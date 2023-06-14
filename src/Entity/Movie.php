@@ -283,7 +283,7 @@ SQL
      * @param string $originallanguage
      * @return Movie
      */
-    public static function create(?int $id,string $title,string $overview,string $originalTitle,string $releaseDate,?int $posterId,string $tagline,int $runtime,string $originallanguage):Movie
+    public static function create(?int $id, string $title, string $overview, string $originalTitle, string $releaseDate, ?int $posterId, string $tagline, int $runtime, string $originallanguage): Movie
     {
         $movie = new Movie();
         $movie->setId($id);
@@ -386,9 +386,9 @@ SQL
      * retourne une date
      * @return string
      */
-    public function getReleaseDateVisual():string
+    public function getReleaseDateVisual(): string
     {
-        $date = explode('-',$this->releaseDate);
+        $date = explode('-', $this->releaseDate);
         $year = $date[0];
         $month = $date[1];
         $day = $date[2];

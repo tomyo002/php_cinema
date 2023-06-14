@@ -17,7 +17,7 @@ class AppWebPage extends WebPage
     {
         return $this->menu;
     }
-    public function getHeader():string
+    public function getHeader(): string
     {
         return $this->header;
     }

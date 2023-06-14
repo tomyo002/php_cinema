@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Entity;
 
 use Database\MyPdo;
@@ -8,13 +10,13 @@ use PDO;
 
 class People
 {
-private int $id;
-private ?int $avatarid;
-private ?string $birthday;
-private ?string $deathday;
-private string $name;
-private string $biography;
-private string $placeOfBirth;
+    private int $id;
+    private ?int $avatarid;
+    private ?string $birthday;
+    private ?string $deathday;
+    private string $name;
+    private string $biography;
+    private string $placeOfBirth;
 
     /**
      * Accesseur d'id de people
@@ -100,7 +102,7 @@ private string $placeOfBirth;
      * @param int $movieId
      * @return string
      */
-    public function getRole(int $movieId):string
+    public function getRole(int $movieId): string
     {
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
@@ -128,8 +130,9 @@ SQL
             select id, avatarid, birthday, deathday, name, biography, placeOfBirth
             from people
             where id = :peopleId
-            SQL);
-        $pdo->bindValue(':peopleId',$id);
+            SQL
+        );
+        $pdo->bindValue(':peopleId', $id);
         $pdo->execute();
         $pdo->setFetchMode(PDO::FETCH_CLASS, People::class);
         if (($people = $pdo->fetch()) === false) {
@@ -144,7 +147,7 @@ SQL
      *
      * @return Movie
      */
-    public function getMovie():array
+    public function getMovie(): array
     {
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
@@ -169,9 +172,9 @@ SQL
      * retourne une date
      * @return string
      */
-    public function getBirthdayVisual():string
+    public function getBirthdayVisual(): string
     {
-        $date = explode('-',$this->birthday);
+        $date = explode('-', $this->birthday);
         $year = $date[0];
         $month = $date[1];
         $day = $date[2];
@@ -183,9 +186,9 @@ SQL
      * retourne une date
      * @return string
      */
-    public function getDeathdayVisual():string
+    public function getDeathdayVisual(): string
     {
-        $date = explode('-',$this->deathday);
+        $date = explode('-', $this->deathday);
         $year = $date[0];
         $month = $date[1];
         $day = $date[2];
