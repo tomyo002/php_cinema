@@ -3,16 +3,25 @@ declare(strict_types=1);
 
 use Entity\Collection\MovieCollection;
 use Entity\Genre;
-use Entity\Movie;
 use Html\AppWebPage;
-
-$webPage = new AppWebPage(' filtre films');
+use Html\Form\GenreForm;
+if($_POST['genre']== "default"){
+    header('Location: index.php',true,302);
+    exit();
+}
+$genre = Genre::findById((int)$_POST['genre']);
+$webPage = new AppWebPage('films - '.$genre->getName());
+$webPage->appendMenu(<<<HTML
+    <a href="admin/movie-form.php">ajouter</a>
+HTML);
+$formGenre = new GenreForm();
+$webPage->appendMenu($formGenre->getHtmlForm("filter.php"));
 $webPage->appendHeader('<a href="index.php" class="welcome">accueil</a>');
 $webPage->appendContent(<<<HTML
                         <div class="list">
 
                         HTML);
-$genre = Genre::findById((int)$_POST['genre']);
+
 foreach(MovieCollection::findByFilter($genre->getId()) as $movie)
 {
     $webPage->appendContent(
