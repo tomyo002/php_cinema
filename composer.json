@@ -48,6 +48,9 @@
         "test": [
             "@test:cs",
             "@test:codecept"
+        ],
+        "test:browse": [
+            "php vendor/bin/codecept run Browse"
         ]
     },
     "require-dev": {
