@@ -80,7 +80,7 @@ HTML;
             throw new ParameterException("le film n'a pas de titre");
         }
         if (!isset($_POST['overview']) || empty($this->stripTagsAndTrim($_POST['overview']))) {
-            throw new ParameterException("le film n'a pas de resumé");
+            throw new ParameterException("le film n'a pas de résumé");
         }
         if (!isset($_POST['originaltitle']) || empty($this->stripTagsAndTrim($_POST['originaltitle']))) {
             throw new ParameterException("le film n'a pas de titre original");
