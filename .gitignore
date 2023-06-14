@@ -3,6 +3,6 @@
 .php-cs-fixer.cache
 
 /vendor/
-tests/musiclite.sqlite
-tests/musiclite.sqlite_snapshot
+tests/movie_lite.sqlite
+tests/movie_lite.sqlite_snapshot
 /.mypdo.ini
