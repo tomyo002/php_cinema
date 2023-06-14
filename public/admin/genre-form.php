@@ -7,7 +7,7 @@ use Html\AppWebPage;
 $webPage = new AppWebPage("filtre");
 $webPage->appendHeader('<a href="../index.php" class="welcome">accueil</a>');
 $webPage->appendContent(<<<HTML
-    <form name="genre-form" method="post" action="../filter.php">
+    <form name="genre-form" method="post" action="../filter.php" class="genre__form">
     <label for="select">Choisir un genre:</label>
     <select name="genre" id="select">
         <option value="">--Please choose an option--</option>
