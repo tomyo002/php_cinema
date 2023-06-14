@@ -60,7 +60,7 @@ foreach ($movies as $movie){
                             <span class="movie__name">{$movie->getTitle()}</span>
                             <span class="movie__date">{$movie->getReleaseDate()}</span>
                         </div>  
-                            <span class="movie__role">{$people->getRole($movie->getId())}-></span>
+                            <span class="movie__role">{$people->getRole($movie->getId())}</span>
                             
                     </div>
                 </div>

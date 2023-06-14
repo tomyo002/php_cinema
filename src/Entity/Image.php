@@ -14,6 +14,9 @@ class Image
     private string $jpeg;
 
     /**
+     * Accesseur d'id d'image
+     * retourne une valeur sous forme d'entier
+     *
      * @return int
      */
     public function getId(): int
@@ -22,12 +25,23 @@ class Image
     }
 
     /**
+     * Accesseur du jpeg d'image
+     * retourne une valeur sous forme de chaîne de caractère
+     *
      * @return string
      */
     public function getJpeg(): string
     {
         return $this->jpeg;
     }
+
+    /**
+     * Méthode de classe qui utilise une id en paramètre pour trouver et donner un objet image
+     * retourne un objet image
+     *
+     * @param int $id
+     * @return Image
+     */
     public static function findById(int $id): Image
     {
         $stmt = MyPdo::getInstance()->prepare(
