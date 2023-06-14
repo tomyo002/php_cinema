@@ -21,6 +21,9 @@ class Movie
     private string $title;
 
     /**
+     * Accesseur d'id de film
+     * retourne une valeur sous form de chiffre ou null
+     *
      * @return int|null
      */
     public function getId(): ?int
@@ -29,6 +32,8 @@ class Movie
     }
 
     /**
+     * Accesseur
+     *
      * @return int|null
      */
     public function getPosterId(): ?int

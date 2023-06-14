@@ -11,7 +11,13 @@ use PDO;
 
 class MovieCollection
 {
-    public static function findAll(): array
+    /**
+     * Méthode de classe qui récupère tous les films de la base de donnée
+     * retourne un tableau de tous les films
+     *
+     * @return Movie
+     */
+    public static function findAll(): Movie
     {
         $pdo = MyPdo::getInstance()->prepare(
             <<<'SQL'
@@ -24,7 +30,16 @@ class MovieCollection
         $pdo->setFetchMode(PDO::FETCH_CLASS, Movie::class);
         return $pdo->fetchAll();
     }
-    public static function findByFilter(int $idFilter): array|false
+
+    /**
+     * Méthode de classe qui récupère les films par rapport à une id de genre pris en paramètre
+     * retourne un tableau de film ou un message d'erreur en cas de paramètre inexistante
+     *
+     * @param int $idFilter
+     * @return Movie|false
+     */
+
+    public static function findByFilter(int $idFilter):Movie|false
     {
 
         $pdo = MyPdo::getInstance()->prepare(

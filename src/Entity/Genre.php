@@ -13,6 +13,9 @@ class Genre
     private string $name;
 
     /**
+     * Accesseur d'id de genre
+     * retourne une valeur sous forme de chiffre
+     *
      * @return int
      */
     public function getId(): int
@@ -21,6 +24,9 @@ class Genre
     }
 
     /**
+     * Accesseur du nom de genre
+     * retourne une valeur sous forme de chaîne de caractère
+     *
      * @return string
      */
     public function getName(): string
@@ -28,6 +34,13 @@ class Genre
         return $this->name;
     }
 
+    /**
+     * Méthode de classe qui utilise un id en paramètre et donne un genre
+     * retourne un objet genre
+     *
+     * @param int $id
+     * @return Genre
+     */
     public static function findById(int $id): Genre
     {
         $pdo = MyPdo::getInstance()->prepare(
