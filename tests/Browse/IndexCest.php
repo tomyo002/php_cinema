@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Browse;
@@ -7,7 +8,7 @@ use Tests\BrowseTester;
 
 class IndexCest
 {
-    public function checkAppWebPageHtmlStructure(BrowseTester $I):void
+    public function checkAppWebPageHtmlStructure(BrowseTester $I): void
     {
         $I->amOnPage('/');
         $I->seeResponseCodeIs(200);
@@ -19,7 +20,7 @@ class IndexCest
         $I->seeElement('.footer');
     }
 
-    public function clickOnArtistLink(BrowseTester $I):void
+    public function clickOnArtistLink(BrowseTester $I): void
     {
         $I->amOnPage('/');
         $I->seeResponseCodeIs(200);

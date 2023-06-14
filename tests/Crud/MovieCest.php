@@ -1,8 +1,11 @@
 <?php
+
 namespace Tests\Crud;
+
 use Entity\Exception\EntityNotFoundException;
 use Entity\Movie;
 use Tests\CrudTester;
+
 class MovieCest
 {
     public function findById(CrudTester $I): void
@@ -19,7 +22,7 @@ class MovieCest
         });
     }
 
-    public function delete(CrudTester $I):void
+    public function delete(CrudTester $I): void
     {
         $movie = Movie::findById(108);
         $movie->delete();

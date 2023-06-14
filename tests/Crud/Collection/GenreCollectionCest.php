@@ -1,11 +1,14 @@
 <?php
+
 namespace Tests\Crud\Collection;
+
 use Entity\Collection\genreCollection;
 use Entity\Genre;
 use Tests\CrudTester;
+
 class GenreCollectionCest
 {
-    public function findAll(CrudTester $I):void
+    public function findAll(CrudTester $I): void
     {
         $expectedGenres = [
             ['id' => 28, 'name' => 'Action'],

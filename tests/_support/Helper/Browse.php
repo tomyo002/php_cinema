@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\Helper;
 
 // here you can define custom actions
@@ -6,5 +7,4 @@ namespace Tests\Helper;
 
 class Browse extends \Codeception\Module
 {
-
 }
